@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+			<div class="row fullscreen align-items-center justify-content-start" style="height:760px">
+				<div class="col-lg-12">
+                   <h1 style="text-align:center"> Add Product Here</h1>
+                   <form style="text-align:center" method="post" action="{% url 'productdata' %}" enctype="multipart/form-data">
+                   {% csrf_token %}
+                       <select name="ca_name"  style="margin-left: auto; margin-right: auto; text-align-last: center;">
+                           <option>Select Category</option>
+                           {% for i in catname %}
+                           <option>{{i.ca_name}}</option>
+                           {% endfor %}
+                       </select><br><br>
+                       <input type="text" placeholder="Product Name" name="product_name"><br><br>
+                       <input type="text" placeholder="Description" name="product_description"><br><br>
+                       <input type="text" placeholder="Price" name="price"><br><br>
+                       <input type="text" placeholder="Available Stock" name="stock"><br><br>
+                       <input type="file" placeholder="image" name="product_image"><br><br>
+                       <input type="file" placeholder="image" name="product_imagee"><br><br>
+                       <input type="file" placeholder="image" name="product_imageee"><br><br>
+                       <button type="submit" style="border-radius:50px; width:100px; ">Add</button>
+                    </form>
+                </div>
+            </div>
+</div>
+<style>
+        .container {
+            width: 100%;
+            max-width: 1500px; /* Adjust this value as needed */
+            margin: 0 auto;
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+</style>
+</body>
+</html>
+{% endblock %}

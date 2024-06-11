@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container " >
+<!--    <div style="height:130px">-->
+<!--&lt;!&ndash;                   <h1 style="text-align:center">Product Details</h1>&ndash;&gt;-->
+<!--        </div>-->
+    <div>
+        <h1 style="text-align:center">Product Details</h1>
+    </div>
+    <div >
+                    <table width="100%" >
+                        <tr>
+                             <th>Category Name</th>
+                            <th>Product Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Available Stock</th>
+                            <th>Image</th>
+                            <th>Image1</th>
+                            <th>Image2</th>
+                        </tr>
+                        {% for i in product %}
+                        <tr>
+                            <td>{{i.cat_name}}</td>
+                            <td>{{i.pro_name}}</td>
+                            <td>{{i.pro_description}}</td>
+                            <td>{{i.pro_price}}</td>
+                            <td>{{i.pro_stock}}</td>
+                            <td>
+                                 <img src="{{i.pro_product_image.url}}" width="100px" height="100px">
+                            </td>
+                            <td>
+                                 <img src="{{i.pro_product_imagee.url}}" width="100px" height="100px">
+                            </td>
+                            <td>
+                                 <img src="{{i.pro_product_imageee.url}}" width="100px" height="100px">
+                            </td>
+                            <td>
+                                <form action="{% url 'productedit' data3=i.id %}">
+                                    <button> Edit</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{% url 'prodelete' prodata=i.id %}">
+                                <button>Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+         </div>
+
+</div>
+<style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .container {
+            width: 100%;
+            max-width: 1500px; /* Adjust this value as needed */
+            margin: 0 auto;
+        th, td {
+            border: 2px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+    </style>
+
+
+
+
+</body>
+</html>
+{% endblock %}

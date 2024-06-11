@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container " >
+<!--    <div style="height:130px">-->
+<!--&lt;!&ndash;                   <h1 style="text-align:center">Product Details</h1>&ndash;&gt;-->
+<!--        </div>-->
+    <div>
+        <h1 style="text-align:center">Order Placed By Customers </h1>
+    </div>
+    <div >
+                    <table width="120%">
+                        <tbody>
+                        <tr>
+                             <th>First Name</th><br><br>
+                            <th>Last Name</th>
+                            <th>Country</th>
+                            <th>State</th>
+                            <th>Address</th>
+                            <th>Postal Zip</th>
+                            <th>Apartment</th>
+                            <th>Email Address</th>
+                            <th>Phone</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                        {% for i in order %}
+                        <tr>
+                            <td>{{i.First_Name}}</td>
+                            <td>{{i.Last_Name}}</td>
+                            <td>{{i.Country}}</td>
+                            <td>{{i.State}}</td>
+                            <td>{{i.Address}}</td>
+                            <td>{{i.Postal_Zip}}</td>
+                            <td>{{i.Apartment}}</td>
+                            <td>{{i.Email_Address}}</td>
+                            <td>{{i.Phone}}</td>
+
+                            <td>{{i.Product|safe}}</td>
+
+                            <td>{{i.Quantity}}</td>
+                            <td>{{i.Price}}</td>
+
+<!--                            <td>-->
+<!--                                <form action="{% url 'productedit' data3=i.id %}">-->
+<!--                                    <button> Edit</button>-->
+<!--                                </form>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <form action="{% url 'prodelete' prodata=i.id %}">-->
+<!--                                <button>Delete</button>-->
+<!--                                </form>-->
+<!--                            </td>-->
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+         </div>
+
+</div>
+<style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .container {
+            width: 100%;
+            max-width: 1500px; /* Adjust this value as needed */
+            margin: 0 auto;
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+    </style>
+
+
+
+</body>
+</html>
+{% endblock %}
